@@ -1,0 +1,39 @@
+server:
+  port: 8070
+  servlet:
+    context-path: /api/v1
+
+spring:
+  application:
+    name: bestcommerce-login-ms
+
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+    show-sql: false
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    data-username: sa
+    password:
+    initialization-mode: always
+
+  h2:
+    console:
+      enabled: true
+      path: /h2
+      settings:
+        web-allow-others: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
