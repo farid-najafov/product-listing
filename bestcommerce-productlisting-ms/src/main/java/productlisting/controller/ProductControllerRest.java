@@ -21,7 +21,7 @@ public class ProductControllerRest {
     @GetMapping
     public ResponseEntity<List<ProductResponseModel>> getProductsByMerchantId(@PathVariable String id) {
         List<ProductResponseModel> products = productService.getMerchantProducts(id);
-        return products.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(products);
+        return products.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(products);
     }
 
 }

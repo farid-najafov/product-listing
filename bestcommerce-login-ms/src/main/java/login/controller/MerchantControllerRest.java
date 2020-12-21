@@ -20,7 +20,7 @@ public class MerchantControllerRest {
     public ResponseEntity<MerchantResponseModel> getProducts(@PathVariable String id) {
         return merchantService.getProductsByMerchantId(id)
                 .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.noContent().build());
+                .orElse(ResponseEntity.notFound().build());
     }
 
 }

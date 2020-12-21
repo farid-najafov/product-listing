@@ -35,7 +35,7 @@ public class ProductController {
         CollectionModel<EntityModel<ProductResponseModel>> collectionModel = CollectionModel.of(products)
                 .add(linkTo(methodOn(this.getClass()).getProducts()).withRel("products"));
 
-        return products.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(collectionModel);
+        return products.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(collectionModel);
     }
 
     @GetMapping("/{prodId}")
@@ -43,7 +43,7 @@ public class ProductController {
         return productService.getOne(prodId)
                 .map(body -> ResponseEntity.ok(EntityModel.of(body,
                         linkTo(methodOn(this.getClass()).getOneProduct(prodId)).withSelfRel())))
-                .orElse(ResponseEntity.noContent().build());
+                .orElse(ResponseEntity.notFound().build());
     }
 
 }
