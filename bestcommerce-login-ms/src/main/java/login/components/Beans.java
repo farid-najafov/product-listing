@@ -1,6 +1,7 @@
 package login.components;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -31,4 +32,8 @@ public class Beans {
         return new ModelMapper();
     }
 
+    @Bean
+    public Queue queue() {
+        return new Queue("create.merchant", false);
+    }
 }
